@@ -44,5 +44,9 @@ And some other cool stuff:
 - You can change the default Spring Boot logo by adding a banner.txt file in your properties.
 - You don't have to use Spring Data MongoDB. The MongoDB driver is more flexible and already provide everything you need to code efficiently and optimise your queries correctly.
 
+
+##PersonController
+##QuotesController
+
 ## Author
 - Rajesh 
