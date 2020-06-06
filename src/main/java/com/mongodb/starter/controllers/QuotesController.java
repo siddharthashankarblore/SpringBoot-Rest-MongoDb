@@ -2,9 +2,9 @@ package com.mongodb.starter.controllers;
 
 import static java.util.Arrays.asList;
 
+
 import java.util.List;
 
-import javax.management.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jayway.jsonpath.Criteria;
 import com.mongodb.starter.models.Quotes;
 import com.mongodb.starter.repositories.QuotesRepository;
 /* 
