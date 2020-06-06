@@ -25,7 +25,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import com.mongodb.client.model.ReplaceOneModel;
 import com.mongodb.client.model.WriteModel;
-import com.mongodb.starter.models.Person;
 import com.mongodb.starter.models.Quotes;
 /* 
  * author : Rajesh Thokala
@@ -41,7 +40,7 @@ public class MongoDBQuoteRepository implements QuotesRepository {
 @Autowired
 private MongoClient client;
 private MongoCollection<Quotes> quotesCollection;
-
+int count=0;
 @PostConstruct
 void init() {
 	quotesCollection = client.getDatabase("test").getCollection("quotes", Quotes.class);
@@ -64,7 +63,41 @@ void init() {
 	            }, txnOptions);
 	        }
 	    }
-
+/*added to find all by type **/
+	@Override
+	public List<Quotes> finAllByAuthor(String author){
+		
+		return quotesCollection.find(eq("author",author)).into(new ArrayList<>());
+	//	return quotesCollection.find(eq("author",author)).batchSize(3).into(new ArrayList<>());
+	}
+	/*added to find by type **/
+	@Override
+	public List<Quotes> finByAuthor(String author){
+		List<Quotes> quoteList= quotesCollection.find(eq("author",author)).into(new ArrayList<>());
+			List<Quotes> newList=new ArrayList<>();
+		for(int i=count;i<count+3&&i<quoteList.size();i++) {
+			newList.add(quoteList.get(i));
+		}
+		return newList;
+	}
+	
+	/*added to find all by type **/
+	@Override
+	public List<Quotes> finAllByType(String type){
+		
+		return quotesCollection.find(eq("type",type)).into(new ArrayList<>());
+		 
+	}
+	/*added to find by type **/
+	@Override
+	public List<Quotes> finByType(String type){
+	List<Quotes> quoteList= quotesCollection.find(eq("type",type)).into(new ArrayList<>());
+	List<Quotes> newList=new ArrayList<>();
+	for(int i=count;i<count+3&&i<quoteList.size();i++) {
+		newList.add(quoteList.get(i));
+	}
+	return newList;
+	}
 	@Override
 	public List<Quotes> findAll() {
 		// TODO Auto-generated method stub

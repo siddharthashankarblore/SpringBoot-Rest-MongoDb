@@ -4,6 +4,8 @@ import static java.util.Arrays.asList;
 
 import java.util.List;
 
+import javax.management.Query;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jayway.jsonpath.Criteria;
 import com.mongodb.starter.models.Quotes;
 import com.mongodb.starter.repositories.QuotesRepository;
 /* 
@@ -59,7 +62,37 @@ public class QuotesController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.ok(quotes);
     }
+    
+    /** Getting list of quotes with type ***/
+    @GetMapping("quotes/type/{all}")
+    public List<Quotes> getQuotesByType(@PathVariable String all){ 
 
+    	return quotesRepository.finAllByType(all);
+    }
+
+    /** Getting quote with type  ***/
+    
+    @GetMapping("quote/type/{findOne}")
+    public List<Quotes> getQuoteByType(@PathVariable String findOne){
+    	return quotesRepository.finByType(findOne);
+    
+    }
+    
+   
+    /** Getting list of quotes with author  ***/
+    @GetMapping("quotes/author/{all}")
+    public List<Quotes> getQuotesByAuthor(@PathVariable String all){ 
+    		return quotesRepository.finAllByAuthor(all);
+    }
+
+    
+    /** Getting quote with author  ***/
+    @GetMapping("quote/author/{findOne}")
+    public List<Quotes> getQuoteByAuthor(@PathVariable String findOne){
+    	return quotesRepository.finByAuthor(findOne);
+    		
+    }
+   
     @GetMapping("quotes/{ids}")
     public List<Quotes> getQuotess(@PathVariable String ids) {
         List<String> listIds = asList(ids.split(","));

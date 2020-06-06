@@ -1,8 +1,11 @@
 package com.mongodb.starter.repositories;
 
+import static com.mongodb.client.model.Filters.eq;
+
+import java.util.ArrayList;
 import java.util.List;
 
-
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.starter.models.Quotes;
@@ -33,5 +36,12 @@ public interface QuotesRepository {
     Quotes update(Quotes quotes);
 
     long update(List<Quotes> quotess);
+	List<Quotes> finAllByType(String type);
+	/*added to find by type **/
+	 List<Quotes> finByType(String type);
+		public List<Quotes> finAllByAuthor(String author);
+		/*added to find by type **/
+			List<Quotes> finByAuthor(String author);
+	 
 
 }
