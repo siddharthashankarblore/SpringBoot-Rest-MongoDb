@@ -31,8 +31,8 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     }
 
     private ApiInfo info() {
-        return new ApiInfoBuilder().title("Spring Boot MongoDB project")
-                                   .description("Quick start project using Java, Spring boot and MongoDB")
+        return new ApiInfoBuilder().title("Get Your Quote Bot ")
+                                   .description("Quote provider API , which gives quote for you . Integrated framework with chat bot ")
                                    .contact(new Contact("Rajesh Thokala", "https://github.com/rajeshjaava",
                                                         "rajeshthokala10@gmail.com"))
                                    .version("1.0.0")
