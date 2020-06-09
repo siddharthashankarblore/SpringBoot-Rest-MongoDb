@@ -31,7 +31,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     }
 
     private ApiInfo info() {
-        return new ApiInfoBuilder().title("Get Your Quote Bot ")
+        return new ApiInfoBuilder().title("Get Your Quote Bot API")
                                    .description("Quote provider API , which gives quote for you . Integrated framework with chat bot ")
                                    .contact(new Contact("Rajesh Thokala", "https://github.com/rajeshjaava",
                                                         "rajeshthokala10@gmail.com"))
